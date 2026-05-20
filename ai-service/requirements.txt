@@ -11,7 +11,7 @@ soundfile
 pedalboard
 pydub
 
-numpy<2.0
+numpy==1.26.4
 scipy
 scikit-learn
 
@@ -21,7 +21,7 @@ mutagen
 python-dotenv
 openai
 
-rvc-python
+
 pyloudnorm
 
 diffusers
