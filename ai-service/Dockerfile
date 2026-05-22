@@ -17,7 +17,7 @@ RUN pip install --upgrade pip && \
     pip install torch==2.1.0 torchaudio==2.1.0 torchvision==0.16.0 \
     --index-url https://download.pytorch.org/whl/cpu
 
-# Step 2 — Install everything else (audiocraft will see torch 2.1.0 already installed)
+# Step 2 — Install everything else(audiocraft will see torch 2.1.0 already installed)
 RUN pip install --no-deps audiocraft==1.3.0
 RUN pip install -r requirements.txt --no-deps
 

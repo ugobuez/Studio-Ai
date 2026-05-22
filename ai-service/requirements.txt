@@ -1,4 +1,4 @@
-# requirements.txt — Fixed & Compatible
+# requirements.txt 
 
 # API
 fastapi==0.111.0

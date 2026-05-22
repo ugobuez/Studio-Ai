@@ -7,7 +7,7 @@ load_dotenv()
 
 app = FastAPI(title="Studio AI Service", description="AI Microservice for Studio AI Music Generation Platform")
 
-# Include routers
+# Include router
 app.include_router(generate_music.router, tags=["Music"])
 app.include_router(master_audio.router, tags=["Mastering"])
 app.include_router(generate_voice.router, tags=["Voice"])
