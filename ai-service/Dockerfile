@@ -8,17 +8,15 @@ ENV PYTHONUNBUFFERED=1
 ENV PIP_NO_CACHE_DIR=1
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# ── Stage 2: System dependencies ────────────────────────────────
+# ── Stage 2: System dependencies (fixed) ────────────────────────
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     libsndfile1 \
     libsndfile1-dev \
     libffi-dev \
-    libffi8 \
     libssl-dev \
     libblas-dev \
     liblapack-dev \
-    libcffi-dev \
     git \
     curl \
     wget \
@@ -28,7 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# ── Stage 3: Upgrade pip + core tools + cffi FIRST ──────────────
+# ── Stage 3: Upgrade pip + cffi FIRST ───────────────────────────
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install cffi==1.16.0
 
@@ -46,13 +44,13 @@ RUN pip install \
     torchvision==0.16.0 \
     --index-url https://download.pytorch.org/whl/cpu
 
-# ── Stage 6: Soundfile AFTER cffi is installed ──────────────────
+# ── Stage 6: Soundfile AFTER cffi ───────────────────────────────
 RUN pip install soundfile==0.12.1
 
 # ── Stage 7: Audiocraft AFTER torch + soundfile ─────────────────
 RUN pip install audiocraft==1.3.0
 
-# ── Stage 8: FastAPI + Uvicorn stack ────────────────────────────
+# ── Stage 8: FastAPI + Uvicorn ──────────────────────────────────
 RUN pip install \
     click==8.1.7 \
     h11==0.14.0 \
